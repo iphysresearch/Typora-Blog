@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hi, I'm Jackeriss, a Python developer. This blog is written in python using Typora-Blog.">
+    <meta name="keywords" content="Jackeriss">
+    <title>{% block title %}Jackeriss{% end %}</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.17.1/locale/zh-cn.js"></script>
+    <script src="/static/js/index.js"></script>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/icon.png">
+    <link rel="shortcut icon" href="/static/images/icon.png">
+    {% block head %}{% end %}
+  </head>
+  <header>
+    <div class="container clearfix">
+      <div class="logo left">
+        <a href="/" title="Jackeriss">
+          <img src="/static/images/logo.png" alt="Jackeriss" height="18">
+        </a>
+      </div>
+      <div class="search left">
+      </div>
+      <div class="nav nav-user right">
+        <ul>
+          <li><a href="/achive">归档</a></li>
+          <li><a href="/product">项目</a></li>
+          <li><a href="/share">分享</a></li>
+          <li><a href="/link">友链</a></li>
+          <li><a href="/about">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="main-body">
+    {% block section %}{% end %}
+    <div class="go-top dn" id="go-top">
+      <a href="javascript:;" class="go"><img src="/static/images/top.svg"/></a>
+    </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <p>
+        ©2016 <a href="/">Jackeriss</a> Powered by <a href="https://github.com/Jackeriss/Typora-Blog" target="_blank">Typora-Blog</a>
+      </p>
+    </div>
+  </footer>
+</html>

@@ -1,0 +1,18 @@
+{% extends base.html %}
+{% block title %}归档{% end %}
+{% block section %}
+<div class="staticBlock">
+  <h3>归档</h3>
+  {% if len(posts) == 0 %}
+  <div class="postBlank">
+    <p>暂时还没有文章</p>
+  </div>
+  {% end %}
+  {% for post in posts %}
+  <div class="achiveBlock">
+    <div class="absoluteTime"><input type="hidden" value="{{ post['timestamp'] }}"/></div>
+    <div class="achiveTitle"><a href="/p/{{ post['title'] }}">{{ post['title'] }}</a></div>
+  </div>
+  {% end %}
+</div>
+{% end %}

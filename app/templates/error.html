@@ -1,0 +1,23 @@
+{% extends base.html %}
+{% block title %}
+{% if code == '404' %}
+404
+{% else %}
+500
+{% end %}
+{% end %}
+{% block section %}
+<body class='typora-export' >
+  <div class="postBlock">
+    <div class="postBlank">
+      {% if code == '404' %}
+      <h3>404</h3>
+      <p>查无此文</p>
+      {% else %}
+      <h3>500</h3>
+      <p>出现故障</p>
+      {% end %}
+    </div>
+  </div>
+</body>
+{% end %}
