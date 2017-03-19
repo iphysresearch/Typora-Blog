@@ -40,7 +40,7 @@ def process():
             if post['abstract'] == str(None):
                 post['abstract'] = str(soup.find('p')).replace('</p>', postLink + '</p>')
             try:
-                template = '{% extends "../base.html" %}{% block title %}' + post['title'] + '{% end %}{% block section %}<div class="postBlock">' + str(soup.find('body')).replace('</h2>', '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>') + '</div>{% end %}'
+                template = '{% extends "../base.html" %}{% block title %}' + post['abstract'] + '{% end %}{% block title %}' + post['title'] + '{% end %}{% block section %}<div class="postBlock">' + str(soup.find('body')).replace('</h2>', '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>') + '<div class="ds-thread" data-thread-key="' + post['title'] + '" data-title="' + post['title'] + '" data-url="https://www.jackeriss.com/' + post['title'] + '"></div></div>{% end %}'
             except:
                 pass
             with open('app/templates/posts/%s.html' % post['title'], 'w') as templateFile:
