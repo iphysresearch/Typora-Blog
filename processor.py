@@ -34,13 +34,13 @@ def process():
             soup.find('p').decompose()
             postLink = ' ...<a href="/p/%s"> 阅读全文</a>' % post['title']
             try:
-                post['abstract'] = str(soup.find('div', attrs={'id':'a'})).replace('</p></div>', postLink + '</p></div>')
+                post['abstract'] = str(soup.find('div', attrs={'class':'a'})).replace('</p></div>', postLink + '</p></div>')
             except:
-                post['abstract'] = str(soup.find('div', attrs={'id':'a'})).replace('</div>', postLink + '</div>')
+                post['abstract'] = str(soup.find('div', attrs={'class':'a'})).replace('</div>', postLink + '</div>')
             if post['abstract'] == str(None):
                 post['abstract'] = str(soup.find('p')).replace('</p>', postLink + '</p>')
             try:
-                template = '{% extends "../base.html" %}{% block title %}' + post['abstract'] + '{% end %}{% block title %}' + post['title'] + '{% end %}{% block section %}<div class="postBlock">' + str(soup.find('body')).replace('</h2>', '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>') + '<div class="ds-thread" data-thread-key="' + post['title'] + '" data-title="' + post['title'] + '" data-url="https://www.jackeriss.com/' + post['title'] + '"></div></div>{% end %}'
+                template = '{% extends "../base.html" %}{% block description %}' + post['title'] + '{% end %}{% block title %}' + post['title'] + '{% end %}{% block section %}<div class="postBlock">' + str(soup.find('body')).replace('</h2>', '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>') + '<div class="ds-thread" data-thread-key="' + post['title'] + '" data-title="' + post['title'] + '" data-url="https://www.jackeriss.com/' + post['title'] + '"></div></div>{% end %}'
             except:
                 pass
             with open('app/templates/posts/%s.html' % post['title'], 'w') as templateFile:
