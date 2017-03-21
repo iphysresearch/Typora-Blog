@@ -7,12 +7,12 @@
   </div>
 </div>
 {% else %}
-<input type="hidden" class="totalPage" value="{{ int((len(posts) + 9) / 10) }}"/>
+<input type="hidden" class="totalPage" value="{{ int((len(posts) + 4) / 5) }}"/>
 {% for i, post in enumerate(posts) %}
 {% if i == 0 %}
 <div class="pageBlock" id="page1">
-{% elif i % 10 == 0 %}
-</div><div class="pageBlock dn" id="page{{ int(i / 10 + 1) }}">
+{% elif i % 5 == 0 %}
+</div><div class="pageBlock dn" id="page{{ int(i / 5 + 1) }}">
 {% end %}
 <div class="postBlock">
   <h2 class="title"><a href="/p/{{ post['title'] }}">{{ post['title'] }}</a></h2>
