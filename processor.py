@@ -26,7 +26,7 @@ def process():
     for postFileName in newPosts:
         if '.html' in postFileName:
             post = {}
-            post['title'] = postFileName.strip('.html')
+            post['title'] = postFileName.replace('.html', '')
             with open('posts/%s' % postFileName, 'r') as sourceFile:
                 text = sourceFile.read()
             soup = BeautifulSoup(text, 'lxml')
