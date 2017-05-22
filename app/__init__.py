@@ -2,6 +2,7 @@ import os
 from tornado import web
 from tornado.options import define, options
 from processor import process
+from config import DEV_CONFIG, PROD_CONFIG
 from .handlers import (PageNotFoundHandler,
                        IndexHandler,
                        PostHandler,
@@ -10,8 +11,6 @@ from .handlers import (PageNotFoundHandler,
                        ProductHandler,
                        LinkHandler,
                        AboutHandler)
-from config import DEV_CONFIG, PROD_CONFIG
-
 
 def create_app():
     '''Create APP'''
