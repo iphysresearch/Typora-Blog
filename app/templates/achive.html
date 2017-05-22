@@ -11,7 +11,7 @@
   {% for post in posts %}
   <div class="achiveBlock">
     <div class="absoluteTime"><input type="hidden" value="{{ post['timestamp'] }}"/></div>
-    <div class="achiveTitle"><a href="/p/{{ post['title'] }}">{{ post['title'] }}</a></div>
+    <div class="achiveTitle"><a href="/p/{{ post['id'] }}">{{ post['title'] }}</a></div>
   </div>
   {% end %}
 </div>

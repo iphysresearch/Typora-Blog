@@ -15,7 +15,7 @@
 </div><div class="pageBlock dn" id="page{{ int(i / 5 + 1) }}">
 {% end %}
 <div class="postBlock">
-  <h2 class="title"><a href="/p/{{ post['title'] }}">{{ post['title'] }}</a></h2>
+  <h2 class="title"><a href="/p/{{ post['id'] }}">{{ post['title'] }}</a></h2>
   <div class="time"><input type="hidden" value="{{ post['timestamp'] }}"/></div>
   <div>{% raw post['abstract'] %}</div>
 </div>

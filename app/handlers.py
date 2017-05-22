@@ -31,7 +31,7 @@ class PostHandler(web.RequestHandler):
     def get(self, url):
         found_post = False
         for post in options.CONFIG['POSTS']:
-            if url == post['title']:
+            if url == post['id']:
                 found_post = True
                 break
         if found_post:
