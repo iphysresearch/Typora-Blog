@@ -1,6 +1,7 @@
 import os
 import time
 import datetime
+from snownlp import SnowNLP
 from bs4 import BeautifulSoup
 
 def str2timestamp(time_str):
@@ -44,6 +45,8 @@ def process():
             if post['abstract'] == str(None):
                 post['abstract'] = str(soup.find('p')).replace('</p>', post_link + '</p>')
             try:
+                title = SnowNLP(post['title'])
+                post['id'] = '_'.join(title.pinyin)
                 template = '{% extends "../base.html" %}{% block description %}' \
                 + post['title'] + '{% end %}{% block title %}' + post['title'] + \
                 '{% end %}{% block section %}<div class="postBlock">' + \
@@ -53,7 +56,7 @@ def process():
                 ('<div id="comments"></div>'
                  '<script type="text/javascript">'
                  'const gitment = new Gitment({'
-                 'id: "' + post['title'] + '",'
+                 'id: "' + post['id'] + '",'
                  'owner: "Jackeriss",'
                  'repo: "comments_of_www.jackeriss.com",'
                  'oauth: {'
