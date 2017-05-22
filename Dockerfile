@@ -7,6 +7,6 @@ COPY . /usr/src/typora-blog
 
 RUN pip install -r requirements/common.txt
 
-EXPOSE 8079
+EXPOSE 8084
 
 CMD ["bash","run.sh"]

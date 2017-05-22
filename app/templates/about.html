@@ -20,5 +20,19 @@
       <span>i@jackeriss.com</span>
     </li>
   </ul>
+  <h3>留言板</h3>
+  <div id="comments"></div>
+  <script type="text/javascript">
+    const gitment = new Gitment({
+    id: 'about',
+    owner: 'Jackeriss',
+    repo: 'comments_of_www.jackeriss.com',
+    oauth: {
+      client_id: '748b4dac7ace16b6d7cb',
+      client_secret: 'c5db352dad6f88b898840d628e44cfb5b4eaf4c0',
+    },
+  })
+  gitment.render('comments')
+  </script>
 </div>
 {% end %}

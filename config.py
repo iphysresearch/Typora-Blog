@@ -1,6 +1,11 @@
-from processor import process
+'''Config'''
+import copy
 
-class COMMON_CONFIG:
-    PORT = 8079
-    DEBUG = True
-    POSTS = process()
+COMMON_CONFIG = {
+    'PORT': 8084,
+    'DEBUG': True}
+
+DEV_CONFIG = copy.deepcopy(COMMON_CONFIG)
+
+PROD_CONFIG = copy.deepcopy(COMMON_CONFIG)
+PROD_CONFIG['DEBUG'] = False

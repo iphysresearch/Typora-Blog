@@ -2,8 +2,6 @@
 {% block title %}分享{% end %}
 {% block section %}
 <div class="staticBlock">
-  <h3>音乐</h3>
-  <iframe id="iframepage" frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="380" src="https://music.jackeriss.com/iframe?playlist=36414298&ssl=1&mode=random&max_height=300px"></iframe>
   <h3>电影</h3>
   <!-- Top15 JQuery版 -->
   <!-- 在要展示的位置插入如下代码： -->
@@ -28,5 +26,18 @@
     });
   </script>
   <iframe id="top15_iframe" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="100%" src="https://top15.jackeriss.com/iframe?user_id=Jackeriss&object_type=0&group_type=0&order_by=1&tag=0"></iframe>
+  <div id="comments"></div>
+  <script type="text/javascript">
+    const gitment = new Gitment({
+    id: 'share',
+    owner: 'Jackeriss',
+    repo: 'comments_of_www.jackeriss.com',
+    oauth: {
+      client_id: '748b4dac7ace16b6d7cb',
+      client_secret: 'c5db352dad6f88b898840d628e44cfb5b4eaf4c0',
+    },
+  })
+  gitment.render('comments')
+  </script>
 </div>
 {% end %}

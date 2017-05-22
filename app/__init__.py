@@ -1,16 +1,45 @@
 import os
 from tornado import web
 from tornado.options import define, options
-from .handlers import *
-from config import COMMON_CONFIG
+from processor import process
+from .handlers import (PageNotFoundHandler,
+                       IndexHandler,
+                       PostHandler,
+                       AchiveHandler,
+                       ShareHandler,
+                       ProductHandler,
+                       LinkHandler,
+                       AboutHandler)
+from config import DEV_CONFIG, PROD_CONFIG
+
 
 def create_app():
+    '''Create APP'''
+    define(
+        'config',
+        default='dev',
+        help='config',
+        type=str)
     options.parse_command_line()
-    define('port', default=COMMON_CONFIG.PORT, help='run on the given port', type=int)
+    if options.config == 'dev':
+        DEV_CONFIG['POSTS'] = process()
+        define(
+            'CONFIG',
+            default=DEV_CONFIG,
+            help='config',
+            type=dict)
+    else:
+        PROD_CONFIG['POSTS'] = process()
+        define(
+            'CONFIG',
+            default=PROD_CONFIG,
+            help='config',
+            type=dict)
+    define('port', default=options.CONFIG['PORT'], help='run on the given port', type=int)
     settings = dict(
         template_path=os.path.join(os.path.dirname(__file__), 'templates'),
         static_path=os.path.join(os.path.dirname(__file__), 'static'),
-        debug=COMMON_CONFIG.DEBUG,
+        debug=options.CONFIG['DEBUG'],
         gzip=True,
     )
     app = web.Application([
