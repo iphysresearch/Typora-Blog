@@ -7,6 +7,6 @@ COPY . /usr/src/typora-blog
 
 RUN pip install -r requirements/dev.txt
 
-EXPOSE 8084
+EXPOSE 8083
 
 CMD ["bash", "run.sh"]
