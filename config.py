@@ -2,7 +2,7 @@
 import copy
 
 COMMON_CONFIG = {
-    'PORT': 8084,
+    'PORT': 8083,
     'DEBUG': True}
 
 DEV_CONFIG = copy.deepcopy(COMMON_CONFIG)

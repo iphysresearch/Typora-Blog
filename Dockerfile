@@ -9,4 +9,4 @@ RUN pip install -r requirements/dev.txt
 
 EXPOSE 8084
 
-CMD ["bash","run.sh"]
+CMD ["bash", "run.sh"]
