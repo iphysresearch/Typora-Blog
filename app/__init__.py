@@ -1,3 +1,4 @@
+'''Initialize APP'''
 import os
 from tornado import web
 from tornado.options import define, options
