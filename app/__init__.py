@@ -18,7 +18,7 @@ def create_app():
     define(
         'config',
         default='dev',
-        help='config',
+        help='[dev|prod](dev is defualt)',
         type=str)
     options.parse_command_line()
     if options.config == 'dev':
@@ -26,14 +26,12 @@ def create_app():
         define(
             'CONFIG',
             default=DEV_CONFIG,
-            help='config',
             type=dict)
     else:
         PROD_CONFIG['POSTS'] = process()
         define(
             'CONFIG',
             default=PROD_CONFIG,
-            help='config',
             type=dict)
     define('port', default=options.CONFIG['PORT'], help='run on the given port', type=int)
     settings = dict(

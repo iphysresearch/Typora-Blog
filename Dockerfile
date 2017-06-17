@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/typora-blog
 WORKDIR /usr/src/typora-blog
 COPY . /usr/src/typora-blog
 
-RUN pip install -r requirements/dev.txt
+RUN pip install -r requirements/prod.txt
 
 EXPOSE 8083
 
