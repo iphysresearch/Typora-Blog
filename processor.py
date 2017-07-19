@@ -71,7 +71,7 @@ def process():
                  '{% end %}')
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
-            with open('app/templates/posts/%s.html' % post['title'], 'w', encoding='utf8') as template_file:
+            with open('app/templates/posts/%s.html' % post['title'], 'w') as template_file:
                 template_file.write(template)
             posts.append(post)
     posts.sort(key=lambda x: x['timestamp'], reverse=True)
