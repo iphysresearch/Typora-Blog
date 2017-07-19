@@ -20,8 +20,6 @@ from .handlers import (PageNotFoundHandler,
 
 def create_app():
     '''Create APP'''
-    reload(sys)
-    sys.setdefaultencoding('utf8')
     root_logger = logging.getLogger()
     formatter = logging.Formatter('[%(asctime)s] $%(levelname)s (%(filename)s:%(lineno)d) %(message)s')
     stdout_hdlr = logging.StreamHandler(sys.stdout)

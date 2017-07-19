@@ -33,7 +33,7 @@ def process():
             post['title'] = post_file_name.replace('.html', '')
             title = SnowNLP(post['title'])
             post['id'] = '_'.join(title.pinyin)
-            with open('posts/%s' % post_file_name, 'r') as source_file:
+            with open('posts/%s' % post_file_name, 'r', encoding='utf8') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
             post['timestamp'] = str2timestamp(soup.find('p').get_text())
