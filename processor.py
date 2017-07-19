@@ -33,7 +33,7 @@ def process():
             post['title'] = post_file_name.replace('.html', '')
             title = SnowNLP(post['title'])
             post['id'] = '_'.join(title.pinyin)
-            with open('posts/%s' % post_file_name, 'r', encoding='utf8') as source_file:
+            with open('posts/%s' % post_file_name, 'r') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
             post['timestamp'] = str2timestamp(soup.find('p').get_text())
@@ -71,7 +71,7 @@ def process():
                  '{% end %}')
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
-            with open('app/templates/posts/%s.html' % post['title'], 'w', encoding='utf8') as template_file:
+            with open('app/templates/posts/%s.html' % post['title'], 'w') as template_file:
                 template_file.write(template)
             posts.append(post)
     posts.sort(key=lambda x: x['timestamp'], reverse=True)
