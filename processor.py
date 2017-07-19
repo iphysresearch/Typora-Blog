@@ -2,7 +2,6 @@ import os
 import time
 import datetime
 
-from snownlp import SnowNLP
 from bs4 import BeautifulSoup
 from tornado.options import options
 
@@ -31,8 +30,7 @@ def process():
         if '.html' in post_file_name:
             post = {}
             post['title'] = post_file_name.replace('.html', '')
-            title = SnowNLP(post['title'])
-            post['id'] = '_'.join(title.pinyin)
+            post['id'] = post['title']
             with open('posts/%s' % post_file_name, 'r') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
