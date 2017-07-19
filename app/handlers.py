@@ -17,7 +17,7 @@ class PageNotFoundHandler(web.RequestHandler):
 class IndexHandler(web.RequestHandler):
     @gen.coroutine
     def get(self):
-        self.render('index.html', posts=options.CONFIG['POSTS'])
+        self.render('index.html', posts=options.config['posts'])
 
     def write_error(self, status_code, **kwargs):
         if status_code == 404:
@@ -30,7 +30,7 @@ class PostHandler(web.RequestHandler):
     @gen.coroutine
     def get(self, url):
         found_post = False
-        for post in options.CONFIG['POSTS']:
+        for post in options.config['posts']:
             if url == post['id']:
                 found_post = True
                 break
@@ -50,7 +50,7 @@ class PostHandler(web.RequestHandler):
 class AchiveHandler(web.RequestHandler):
     @gen.coroutine
     def get(self):
-        self.render('achive.html', posts=options.CONFIG['POSTS'])
+        self.render('achive.html', posts=options.config['posts'])
 
     def write_error(self, status_code, **kwargs):
         if status_code == 404:

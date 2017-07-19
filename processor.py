@@ -1,8 +1,10 @@
 import os
 import time
 import datetime
+
 from snownlp import SnowNLP
 from bs4 import BeautifulSoup
+from tornado.options import options
 
 def str2timestamp(time_str):
     try:
@@ -15,8 +17,8 @@ def str2timestamp(time_str):
             return time.mktime(datetime.datetime.strptime(time_str, '%Y/%m/%d %H-%M-%S').timetuple())
         else:
             return time.mktime(datetime.datetime.strptime(time_str, '%Y-%m-%d %H-%M-%S').timetuple())
-    except Exception as _e:
-        print(_e)
+    except Exception as err:
+        options.config['root_logger'].error(err, exc_info=True)
         return 0
 
 def process():
@@ -40,8 +42,8 @@ def process():
             try:
                 post['abstract'] = str(soup.find('div', attrs={'class':'a'})).\
                 replace('</p></div>', post_link + '</p></div>')
-            except Exception as _e:
-                print(_e)
+            except Exception as err:
+                options.config['root_logger'].error(err, exc_info=True)
                 post['abstract'] = str(soup.find('div', attrs={'class':'a'})).\
                 replace('</div>', post_link + '</div>')
             if post['abstract'] == str(None):
@@ -67,8 +69,8 @@ def process():
                  'gitment.render("comments")'
                  '</script>'
                  '{% end %}')
-            except Exception as _e:
-                print(_e)
+            except Exception as err:
+                options.config['root_logger'].error(err, exc_info=True)
             with open('app/templates/posts/%s.html' % post['title'], 'w') as template_file:
                 template_file.write(template)
             posts.append(post)
