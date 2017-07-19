@@ -2,6 +2,7 @@
 import os
 import sys
 import logging
+import codecs
 
 from tornado import web
 from tornado.options import define, options
@@ -20,8 +21,8 @@ from .handlers import (PageNotFoundHandler,
 
 def create_app():
     '''Create APP'''
+    sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
     print(sys.getdefaultencoding())
-    print(sys.stdout.encoding)
     root_logger = logging.getLogger()
     formatter = logging.Formatter('[%(asctime)s] $%(levelname)s (%(filename)s:%(lineno)d) %(message)s')
     stdout_hdlr = logging.StreamHandler(sys.stdout)
