@@ -63,6 +63,8 @@ def create_app():
     root_logger.addHandler(file_err_hdlr)
     options.config['root_logger'] = root_logger
 
+    options.config['root_logger'].info('Create Done')
+
     options.config['posts'] = process()
 
     settings = dict(

@@ -21,6 +21,7 @@ def str2timestamp(time_str):
         return 0
 
 def process():
+    options.config['root_logger'].info('In Process')
     posts = []
     new_posts = os.listdir(os.path.join(options.config['root_path'], 'posts'))
     for template_file_name in os.listdir('app/templates/posts'):
@@ -28,6 +29,7 @@ def process():
             os.remove(os.path.join(options.config['root_path'], 'app/templates/posts', template_file_name))
     for post_file_name in new_posts:
         if '.html' in post_file_name:
+            options.config['root_logger'].info(post_file_name)
             post = {}
             post['title'] = post_file_name.replace('.html', '')
             post['id'] = post['title']
