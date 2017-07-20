@@ -6,8 +6,9 @@ import logging
 from tornado import web
 from tornado.options import define, options
 
-from processor import process
+
 from config import DEV_CONFIG, PROD_CONFIG
+from .processor import process
 from .log_kit import LogFilter
 from .handlers import (PageNotFoundHandler,
                        IndexHandler,
