@@ -10,9 +10,9 @@ from processor import process
 from config import DEV_CONFIG, PROD_CONFIG
 from .log_kit import LogFilter
 from .handlers import (PageNotFoundHandler,
-                    #    IndexHandler,
-                    #    PostHandler,
-                    #    AchiveHandler,
+                       IndexHandler,
+                       PostHandler,
+                       AchiveHandler,
                        ShareHandler,
                        ProductHandler,
                        LinkHandler,
@@ -62,7 +62,7 @@ def create_app():
     root_logger.addHandler(file_err_hdlr)
     options.config['root_logger'] = root_logger
 
-    # options.config['posts'] = process()
+    options.config['posts'] = process()
 
     settings = dict(
         template_path=os.path.join(os.path.dirname(__file__), 'templates'),
@@ -71,9 +71,9 @@ def create_app():
         gzip=True,
     )
     app = web.Application([
-        # (r'/', IndexHandler),
-        # (r'/p/(.*)', PostHandler),
-        # (r'/achive', AchiveHandler),
+        (r'/', IndexHandler),
+        (r'/p/(.*)', PostHandler),
+        (r'/achive', AchiveHandler),
         (r'/share', ShareHandler),
         (r'/product', ProductHandler),
         (r'/link', LinkHandler),

@@ -14,49 +14,49 @@ class PageNotFoundHandler(web.RequestHandler):
             self.render('error.html', code='500')
 
 
-# class IndexHandler(web.RequestHandler):
-#     @gen.coroutine
-#     def get(self):
-#         self.render('index.html', posts=options.config['posts'])
-#
-#     def write_error(self, status_code, **kwargs):
-#         if status_code == 404:
-#             self.render('error.html', code='404')
-#         else:
-#             self.render('error.html', code='500')
-#
-#
-# class PostHandler(web.RequestHandler):
-#     @gen.coroutine
-#     def get(self, url):
-#         found_post = False
-#         for post in options.config['posts']:
-#             if url == post['id']:
-#                 found_post = True
-#                 break
-#         if found_post:
-#             self.render('posts/' + post['title'] +
-#                         '.html', timestamp=post['timestamp'])
-#         else:
-#             self.render('error.html', code='404')
-#
-#     def write_error(self, status_code, **kwargs):
-#         if status_code == 404:
-#             self.render('error.html', code='404')
-#         else:
-#             self.render('error.html', code='500')
-#
-#
-# class AchiveHandler(web.RequestHandler):
-#     @gen.coroutine
-#     def get(self):
-#         self.render('achive.html', posts=options.config['posts'])
-#
-#     def write_error(self, status_code, **kwargs):
-#         if status_code == 404:
-#             self.render('error.html', code='404')
-#         else:
-#             self.render('error.html', code='500')
+class IndexHandler(web.RequestHandler):
+    @gen.coroutine
+    def get(self):
+        self.render('index.html', posts=options.config['posts'])
+
+    def write_error(self, status_code, **kwargs):
+        if status_code == 404:
+            self.render('error.html', code='404')
+        else:
+            self.render('error.html', code='500')
+
+
+class PostHandler(web.RequestHandler):
+    @gen.coroutine
+    def get(self, url):
+        found_post = False
+        for post in options.config['posts']:
+            if url == post['id']:
+                found_post = True
+                break
+        if found_post:
+            self.render('posts/' + post['title'] +
+                        '.html', timestamp=post['timestamp'])
+        else:
+            self.render('error.html', code='404')
+
+    def write_error(self, status_code, **kwargs):
+        if status_code == 404:
+            self.render('error.html', code='404')
+        else:
+            self.render('error.html', code='500')
+
+
+class AchiveHandler(web.RequestHandler):
+    @gen.coroutine
+    def get(self):
+        self.render('achive.html', posts=options.config['posts'])
+
+    def write_error(self, status_code, **kwargs):
+        if status_code == 404:
+            self.render('error.html', code='404')
+        else:
+            self.render('error.html', code='500')
 
 
 class ShareHandler(web.RequestHandler):
