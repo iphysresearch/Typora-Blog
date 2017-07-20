@@ -24,7 +24,7 @@ def process():
     options.config['root_logger'].info('In Process')
     posts = []
     new_posts = os.listdir(os.path.join(options.config['root_path'], 'posts'))
-    for template_file_name in os.listdir('app/templates/posts'):
+    for template_file_name in os.listdir(os.path.join(options.config['root_path'], 'app/templates/posts')):
         if template_file_name not in new_posts:
             os.remove(os.path.join(options.config['root_path'], 'app/templates/posts', template_file_name))
     for post_file_name in new_posts:
@@ -33,7 +33,7 @@ def process():
             post = {}
             post['title'] = post_file_name.replace('.html', '')
             post['id'] = post['title']
-            with open(os.path.join(options.config['root_path'], 'posts/%s') % post_file_name, 'r') as source_file:
+            with open(os.path.join(options.config['root_path'], 'posts/%s' % post_file_name), 'r') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
             post['timestamp'] = str2timestamp(soup.find('p').get_text())
@@ -71,7 +71,7 @@ def process():
                  '{% end %}')
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
-            with open(os.path.join(options.config['root_path'], 'app/templates/posts/%s.html') % post['title'], 'w') as template_file:
+            with open(os.path.join(options.config['root_path'], 'app/templates/posts/%s.html' % post['title']), 'w') as template_file:
                 template_file.write(template)
             posts.append(post)
     posts.sort(key=lambda x: x['timestamp'], reverse=True)
