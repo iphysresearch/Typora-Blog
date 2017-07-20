@@ -21,7 +21,6 @@ def str2timestamp(time_str):
         return 0
 
 def process():
-    options.config['root_logger'].info('In Process')
     posts = []
     new_posts = os.listdir(os.path.join(options.config['root_path'], 'posts'))
     for template_file_name in os.listdir(os.path.join(options.config['root_path'], 'app/templates/posts')):
@@ -29,7 +28,6 @@ def process():
             os.remove(os.path.join(options.config['root_path'], 'app/templates/posts', template_file_name))
     for post_file_name in new_posts:
         if '.html' in post_file_name:
-            options.config['root_logger'].info(post_file_name)
             post = {}
             post['title'] = post_file_name.replace('.html', '')
             post['id'] = post['title']
@@ -54,21 +52,7 @@ def process():
                 '{% end %}{% block section %}<div class="postBlock">' + \
                 str(soup.find('body')).replace('</h2>', '</h2><div class="time">\
                                                <input type="hidden" value="{{ \
-                                               timestamp }}"/></div>') + \
-                ('<div id="comments"></div>'
-                 '<script type="text/javascript">'
-                 'const gitment = new Gitment({'
-                 'id: "' + post['id'] + '",'
-                 'owner: "Jackeriss",'
-                 'repo: "comments_of_www.jackeriss.com",'
-                 'oauth: {'
-                 '  client_id: "748b4dac7ace16b6d7cb",'
-                 '  client_secret: "c5db352dad6f88b898840d628e44cfb5b4eaf4c0",'
-                 '},'
-                 '});'
-                 'gitment.render("comments")'
-                 '</script>'
-                 '{% end %}')
+                                               timestamp }}"/></div>') + '<div id="comments"><p>评论功能暂时关闭！</p></div>{% end %}'
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
             with open(os.path.join(options.config['root_path'], 'app/templates/posts/%s.html' % post['title']), 'w') as template_file:
