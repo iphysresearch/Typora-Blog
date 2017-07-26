@@ -14,11 +14,11 @@ Typora-Blog is a simple but special blog program, Its biggest characteristic is 
 
 ## Usage
 ### Deploy
-Automatic deployment using [Daocloud](http://www.daocloud.io)(or other similar platform) is recommended. This repo has already include the YAML file `daocloud.yml` and the Dockerfile.
+GitHub provides an api for Webhooks, you can use it for automatic deployment.
 
 ### Customization
 1. This blog program does not provide blog name, logo and other configurations in `/config.py`, please directly modify the template file `/app/templates/base.html`, if want to change the appearance of the blog, please edit `/app/static/CSS/style.css`.
-2. You can config the port of this blog program in file `/config.py`. This port should be consistent with the port you expose in `/Dockerfile`.
+2. The program can accept two arguments, use `--help` for more information.
 
 ### Convention over configuration
 1. Write your post with Typora.
