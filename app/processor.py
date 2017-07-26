@@ -52,7 +52,7 @@ def process():
                 '{% end %}{% block section %}<div class="postBlock">' + \
                 str(soup.find('body')).replace('</h2>', '</h2><div class="time">\
                                                <input type="hidden" value="{{ \
-                                               timestamp }}"/></div>') + '<div id="comments"><p>评论功能暂时关闭！</p></div>{% end %}'
+                                               timestamp }}"/></div>') + '{% end %}'
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
             with open(os.path.join(options.config['root_path'], 'app/templates/posts/%s.html' % post['title']), 'w') as template_file:
