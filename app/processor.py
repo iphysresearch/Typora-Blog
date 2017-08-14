@@ -22,16 +22,16 @@ def str2timestamp(time_str):
 
 def process():
     posts = []
-    new_posts = os.listdir(os.path.join(options.config['root_path'], 'posts'))
-    for template_file_name in os.listdir(os.path.join(options.config['root_path'], 'app/templates/posts')):
+    new_posts = os.listdir(os.path.join(options.config['root_path'], 'post'))
+    for template_file_name in os.listdir(os.path.join(options.config['root_path'], 'app/templates/post')):
         if template_file_name not in new_posts:
-            os.remove(os.path.join(options.config['root_path'], 'app/templates/posts', template_file_name))
+            os.remove(os.path.join(options.config['root_path'], 'app/templates/post', template_file_name))
     for post_file_name in new_posts:
         if '.html' in post_file_name:
             post = {}
             post['title'] = post_file_name.replace('.html', '')
             post['id'] = post['title']
-            with open(os.path.join(options.config['root_path'], 'posts/%s' % post_file_name), 'r') as source_file:
+            with open(os.path.join(options.config['root_path'], 'post/%s' % post_file_name), 'r') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
             post['timestamp'] = str2timestamp(soup.find('p').get_text())
@@ -55,7 +55,7 @@ def process():
                                                timestamp }}"/></div>') + '{% end %}'
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
-            with open(os.path.join(options.config['root_path'], 'app/templates/posts/%s.html' % post['title']), 'w') as template_file:
+            with open(os.path.join(options.config['root_path'], 'app/templates/post/%s.html' % post['title']), 'w') as template_file:
                 template_file.write(template)
             posts.append(post)
     posts.sort(key=lambda x: x['timestamp'], reverse=True)

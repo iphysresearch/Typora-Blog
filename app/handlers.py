@@ -35,7 +35,7 @@ class PostHandler(web.RequestHandler):
                 found_post = True
                 break
         if found_post:
-            self.render('posts/' + post['title'] +
+            self.render('post/' + post['title'] +
                         '.html', timestamp=post['timestamp'])
         else:
             self.render('error.html', code='404')
