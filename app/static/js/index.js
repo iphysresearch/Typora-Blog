@@ -51,4 +51,12 @@ $(function() {
   $('#go-top .go').on('click',function(){
     $('html,body').animate({'scrollTop':0}, 500);
   });
+  const gitalk = new Gitalk({
+    clientID: '748b4dac7ace16b6d7cb',
+    clientSecret: 'c5db352dad6f88b898840d628e44cfb5b4eaf4c0',
+    repo: 'comments_of_www.jackeriss.com',
+    owner: 'Jackeriss',
+    admin: ['Jackeriss']
+  })
+  gitalk.render('gitalk-container')
 });
