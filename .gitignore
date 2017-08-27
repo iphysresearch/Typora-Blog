@@ -3,4 +3,4 @@
 *.pyc
 venv/
 __pycache__/
-app/templates/post/
+app/templates/post/*.html
