@@ -29,8 +29,8 @@ def process():
     for post_file_name in new_posts:
         if '.html' in post_file_name:
             post = {}
-            post['title'] = post_file_name.replace('.html', '').replace(' ', '')
-            post['id'] = post['title']
+            post['title'] = post_file_name.replace('.html', '')
+            post['id'] = post['title'].replace(' ', '')
             with open(os.path.join(options.config['root_path'], 'post/%s' % post_file_name), 'r') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
