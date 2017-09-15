@@ -26,6 +26,7 @@ $(function() {
         }
         $('#page1').html(post);
         $('#page1').removeClass('dn');
+        $('footer').removeClass('dn');
       }
     });
   }
