@@ -1,27 +1,14 @@
 {% extends base.html %}
 {% block section %}
-{% if len(posts) == 0 %}
-<div class="postBlock">
+<div class="postBlock dn">
   <div class="postBlank">
     <p>暂时还没有文章</p>
   </div>
 </div>
-{% else %}
-<input type="hidden" class="totalPage" value="{{ int((len(posts) + 4) / 5) }}"/>
-{% for i, post in enumerate(posts) %}
-{% if i == 0 %}
-<div class="pageBlock" id="page1">
-{% elif i % 5 == 0 %}
-</div><div class="pageBlock dn" id="page{{ int(i / 5 + 1) }}">
+<input type="hidden" class="totalPage" value="{{ page_num }}"/>
+{% for i in range(page_num) %}
+<div class="pageBlock dn" id="page{{ i + 1 }}"></div>
 {% end %}
-<div class="postBlock">
-  <h2 class="title"><a href="/p/{{ post['id'] }}">{{ post['title'] }}</a></h2>
-  <div class="time"><input type="hidden" value="{{ post['timestamp'] }}"/></div>
-  <div>{% raw post['abstract'] %}</div>
-</div>
-{% end %}
-{% end %}
-</div>
 <div class="loading">
   <div class="spinner">
     <div class="loader-inner ball-clip-rotate-multiple">

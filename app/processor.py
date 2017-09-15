@@ -9,13 +9,13 @@ def str2timestamp(time_str):
     try:
         if ':' in time_str:
             if '/' in time_str:
-                return time.mktime(datetime.datetime.strptime(time_str, '%Y/%m/%d %H:%M:%S').timetuple())
+                return time_str.split('/')[0], time.mktime(datetime.datetime.strptime(time_str, '%Y/%m/%d %H:%M:%S').timetuple())
             else:
-                return time.mktime(datetime.datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S').timetuple())
+                return time_str.split('-')[0], time.mktime(datetime.datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S').timetuple())
         elif '/' in time_str:
-            return time.mktime(datetime.datetime.strptime(time_str, '%Y/%m/%d %H-%M-%S').timetuple())
+            return time_str.split('/')[0], time.mktime(datetime.datetime.strptime(time_str, '%Y/%m/%d %H-%M-%S').timetuple())
         else:
-            return time.mktime(datetime.datetime.strptime(time_str, '%Y-%m-%d %H-%M-%S').timetuple())
+            return time_str.split('-')[0], time.mktime(datetime.datetime.strptime(time_str, '%Y-%m-%d %H-%M-%S').timetuple())
     except Exception as err:
         options.config['root_logger'].error(err, exc_info=True)
         return 0
@@ -34,7 +34,7 @@ def process():
             with open(os.path.join(options.config['root_path'], 'post/%s' % post_file_name), 'r') as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
-            post['timestamp'] = str2timestamp(soup.find('p').get_text())
+            post['year'], post['timestamp'] = str2timestamp(soup.find('p').get_text())
             soup.find('p').decompose()
             post_link = ' ...<a href="/p/%s"> 阅读全文</a>' % post['id']
             try:

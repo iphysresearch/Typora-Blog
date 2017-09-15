@@ -6,12 +6,12 @@ import logging
 from tornado import web
 from tornado.options import define, options
 
-
 from config import DEV_CONFIG, PROD_CONFIG
 from .processor import process
 from .log_kit import LogFilter
 from .handlers import (PageNotFoundHandler,
                        IndexHandler,
+                       PostsHandler,
                        PostHandler,
                        AchiveHandler,
                        ShareHandler,
@@ -73,6 +73,7 @@ def create_app():
     )
     app = web.Application([
         (r'/', IndexHandler),
+        (r'/posts', PostsHandler),
         (r'/p/(.*)', PostHandler),
         (r'/achive', AchiveHandler),
         (r'/share', ShareHandler),

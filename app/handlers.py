@@ -1,4 +1,4 @@
-from tornado import web, gen
+from tornado import web, gen, escape
 from tornado.options import options
 
 
@@ -17,7 +17,30 @@ class PageNotFoundHandler(web.RequestHandler):
 class IndexHandler(web.RequestHandler):
     @gen.coroutine
     def get(self):
-        self.render('index.html', posts=options.config['posts'])
+        self.render('index.html', page_num=int((len(options.config['posts']) + 4) / options.config['paging']))
+
+    def write_error(self, status_code, **kwargs):
+        if status_code == 404:
+            self.render('error.html', code='404')
+        else:
+            self.render('error.html', code='500')
+
+
+class PostsHandler(web.RequestHandler):
+    @gen.coroutine
+    def get(self):
+        current_page = abs(int(self.get_argument('page', 0)))
+        total_page = int((len(options.config['posts']) + 4) / options.config['paging'])
+        if current_page < total_page:
+            posts = options.config['posts'][(current_page - 1) * options.config['paging']:
+                                            current_page * options.config['paging']]
+        elif current_page == total_page:
+            posts = options.config['posts'][(current_page - 1) * options.config['paging']:
+                                            len(options.config['posts'])]
+        else:
+            posts = []
+        respon_json = escape.json_encode(posts)
+        self.write(respon_json)
 
     def write_error(self, status_code, **kwargs):
         if status_code == 404:

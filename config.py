@@ -7,7 +7,9 @@ ROOT_PATH = os.path.realpath(os.path.dirname(__file__))
 COMMON_CONFIG = {
     'port': 8083,
     'debug': True,
-    'root_path': ROOT_PATH}
+    'root_path': ROOT_PATH,
+    'paging': 5
+}
 
 DEV_CONFIG = copy.deepcopy(COMMON_CONFIG)
 

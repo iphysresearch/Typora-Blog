@@ -1,55 +1,97 @@
 $(function() {
   moment.locale('zh-cn');
-  $('.time').each(function(){
-    var timestamp = $(this).find('input').val();
-    $(this).html(moment.unix(timestamp).fromNow());
-  });
-  $('.absoluteTime').each(function(){
+  $('.achiveTime').each(function() {
     var timestamp = $(this).find('input').val();
     $(this).html(moment.unix(timestamp).format('LL'));
   });
   var loading = false,
     currentPage = 1,
     totalPage = $('.totalPage').val();
-  $(window).on('scroll',function(){
+  if (totalPage == 0) {
+    $('.postBlock').removeClass('dn');
+  } else {
+    $.ajax({
+      type: 'get',
+      url: '/posts',
+      data: {
+        page: currentPage
+      },
+      dataType: 'json',
+      success: function(data) {
+        var post = '';
+        for (var i = 0; i < data.length; i++) {
+          post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].title +
+          '">' + data[i].title + '</a></h2>' + '<div class="time">' +
+          moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
+        }
+        $('#page1').html(post);
+        $('#page1').removeClass('dn');
+      }
+    });
+  }
+  $(window).on('scroll', function() {
     var st = $(document).scrollTop();
-    if(st == $(document).height() - $(window).height()){
-      if(loading == false){
+    if (st == $(document).height() - $(window).height()) {
+      if (loading == false) {
         loading = true;
         currentPage += 1;
-        if(currentPage <= totalPage){
+        if (currentPage <= totalPage) {
           $('.loading').slideDown(300);
           setTimeout(function fade1() {
-            $('#page' + currentPage).show();
+            $.ajax({
+              type: 'get',
+              url: '/posts',
+              data: {
+                page: currentPage
+              },
+              dataType: 'json',
+              success: function(data) {
+                var post = '';
+                for (var i = 0; i < data.length; i++) {
+                  post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].title +
+                  '">' + data[i].title + '</a></h2>' + '<div class="time">' +
+                  moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract +
+                  '</div>')
+                }
+                $('#page' + currentPage).html(post);
+                $('#page' + currentPage).removeClass('dn');
+              }
+            });
             $('.loading').slideUp(300);
             setTimeout(function fade2() {
               loading = false;
             }, 300);
-          }, 1800);
+          }, 1000);
         }
       }
     }
-    if(st > 500){
-      if( $('#main-container').length != 0  ){
-        var w = $(window).width(),mw = $('#main-container').width();
-        if( (w-mw)/2 > 70 )
-          $('#go-top').css({'left':(w - mw) / 2 + mw + 20});
-        else{
-          $('#go-top').css({'left':'auto'});
+    if (st > 500) {
+      if ($('#main-container').length != 0) {
+        var w = $(window).width(),
+          mw = $('#main-container').width();
+        if ((w - mw) / 2 > 70)
+          $('#go-top').css({
+            'left': (w - mw) / 2 + mw + 20
+          });
+        else {
+          $('#go-top').css({
+            'left': 'auto'
+          });
         }
       }
-      $('#go-top').fadeIn(function(){
+      $('#go-top').fadeIn(function() {
         $(this).removeClass('dn');
       });
-    }
-    else{
-      $('#go-top').fadeOut(function(){
+    } else {
+      $('#go-top').fadeOut(function() {
         $(this).addClass('dn');
       });
     }
   });
-  $('#go-top .go').on('click',function(){
-    $('html,body').animate({'scrollTop':0}, 500);
+  $('#go-top .go').on('click', function() {
+    $('html,body').animate({
+      'scrollTop': 0
+    }, 500);
   });
   const gitalk = new Gitalk({
     clientID: '748b4dac7ace16b6d7cb',
