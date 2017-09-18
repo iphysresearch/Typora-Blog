@@ -7,8 +7,8 @@ from tornado import web
 from tornado.options import define, options
 
 from config import DEV_CONFIG, PROD_CONFIG
-from .processor import process
 from .log_kit import LogFilter
+from .processor import process
 from .handlers import (PageNotFoundHandler,
                        IndexHandler,
                        PostsHandler,
