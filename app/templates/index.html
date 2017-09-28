@@ -1,9 +1,7 @@
 {% extends base.html %}
 {% block section %}
-<div class="postBlock dn">
-  <div class="postBlank">
-    <p>暂时还没有文章</p>
-  </div>
+<div class="postBlank dn">
+  <p>暂时还没有文章</p>
 </div>
 <input type="hidden" class="totalPage" value="{{ page_num }}"/>
 {% for i in range(page_num) %}
