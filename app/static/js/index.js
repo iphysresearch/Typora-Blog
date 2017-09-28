@@ -4,11 +4,8 @@ $(function() {
     var timestamp = $(this).find('input').val();
     $(this).html(moment.unix(timestamp).format('LL'));
   });
-  $('header').fadeIn(800, function() {
-    $('header').removeClass('dn');
-  });
-  $('.staticBlock').fadeIn(800, function() {
-    $('.staticBlock').removeClass('dn');
+  $('.container').fadeIn(800, function() {
+    $('.container').removeClass('dn');
   });
   var loading = false,
     currentPage = 1,
@@ -33,12 +30,7 @@ $(function() {
           moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
         }
         $('#page1').html(post);
-        $('#page1').fadeIn(800, function() {
-          $('#page1').removeClass('dn');
-        });
-        $('footer').fadeIn(800, function() {
-          $('footer').removeClass('dn');
-        });
+        $('#page1').removeClass('dn');
       }
     });
   }
