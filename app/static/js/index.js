@@ -10,67 +10,78 @@ $(function() {
   var loading = false,
     currentPage = 1,
     totalPage = $('.totalPage').val();
-  if (totalPage == 0) {
-    $('.postBlank').fadeIn(800, function() {
-      $('.postBlank').removeClass('dn');
-    });
-  } else {
-    $.ajax({
-      type: 'get',
-      url: '/posts',
-      data: {
-        page: currentPage
-      },
-      dataType: 'json',
-      success: function(data) {
-        var post = '';
-        for (var i = 0; i < data.length; i++) {
-          post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].id +
-          '">' + data[i].title + '</a></h2>' + '<div class="time">' +
-          moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
+  if (totalPage) {
+    if (totalPage == 0) {
+      $('.postBlank').fadeIn(800, function() {
+        $('.postBlank').removeClass('dn');
+      });
+    } else {
+      $.ajax({
+        type: 'get',
+        url: '/posts',
+        data: {
+          page: currentPage
+        },
+        dataType: 'json',
+        success: function(data) {
+          var post = '';
+          for (var i = 0; i < data.length; i++) {
+            post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].id +
+            '">' + data[i].title + '</a></h2>' + '<div class="time">' +
+            moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
+          }
+          $('#page1').html(post);
+          $('#page1').fadeIn(800, function() {
+            $('#page1').removeClass('dn');
+          });
+          $('.foot').fadeIn(800, function() {
+            $('.foot').removeClass('dn');
+          });
         }
-        $('#page1').html(post);
-        $('#page1').fadeIn(800, function() {
-          $('#page1').removeClass('dn');
-        });
-      }
+      });
+    }
+  } else {
+    $('.foot').fadeIn(800, function() {
+      $('.foot').removeClass('dn');
     });
   }
   $(window).on('scroll', function() {
     var st = $(document).scrollTop();
-    if (st == $(document).height() - $(window).height()) {
-      if (loading == false) {
-        loading = true;
-        currentPage += 1;
-        if (currentPage <= totalPage) {
-          $('.loading').slideDown(300);
-          setTimeout(function fade1() {
-            $.ajax({
-              type: 'get',
-              url: '/posts',
-              data: {
-                page: currentPage
-              },
-              dataType: 'json',
-              success: function(data) {
-                var post = '';
-                for (var i = 0; i < data.length; i++) {
-                  post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].id +
-                  '">' + data[i].title + '</a></h2>' + '<div class="time">' +
-                  moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract +
-                  '</div>')
+    if (totalPage) {
+      if (st == $(document).height() - $(window).height()) {
+        if (loading == false) {
+          loading = true;
+          currentPage += 1;
+          if (currentPage <= totalPage) {
+            $('.loading').slideDown(300);
+            setTimeout(function fade1() {
+              $.ajax({
+                type: 'get',
+                url: '/posts',
+                data: {
+                  page: currentPage
+                },
+                dataType: 'json',
+                success: function(data) {
+                  var post = '';
+                  for (var i = 0; i < data.length; i++) {
+                    post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].id +
+                    '">' + data[i].title + '</a></h2>' + '<div class="time">' +
+                    moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract +
+                    '</div>')
+                  }
+                  $('#page' + currentPage).html(post);
+                  $('#page' + currentPage).fadeIn(800, function() {
+                    $('#page' + currentPage).removeClass('dn');
+                  });
                 }
-                $('#page' + currentPage).html(post);
-                $('#page' + currentPage).fadeIn(800, function() {
-                  $('#page' + currentPage).removeClass('dn');
-                });
-              }
-            });
-            $('.loading').slideUp(300);
-            setTimeout(function fade2() {
-              loading = false;
-            }, 300);
-          }, 1000);
+              });
+              $('.loading').slideUp(300);
+              setTimeout(function fade2() {
+                loading = false;
+              }, 300);
+            }, 1000);
+          }
         }
       }
     }
