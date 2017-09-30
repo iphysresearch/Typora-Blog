@@ -30,7 +30,9 @@ $(function() {
           moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
         }
         $('#page1').html(post);
-        $('#page1').removeClass('dn');
+        $('#page1').fadeIn(800, function() {
+          $('#page1').removeClass('dn');
+        });
       }
     });
   }
