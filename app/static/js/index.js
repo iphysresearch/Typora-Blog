@@ -1,5 +1,7 @@
 $(function() {
   moment.locale('zh-cn');
+  var time = $('.is-mac').find('.time');
+  time.html(moment.unix(time.find('input').val()).fromNow());
   $('.achiveTime').each(function() {
     var timestamp = $(this).find('input').val();
     $(this).html(moment.unix(timestamp).format('LL'));
