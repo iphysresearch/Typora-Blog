@@ -6,9 +6,6 @@ $(function() {
     var timestamp = $(this).find('input').val();
     $(this).html(moment.unix(timestamp).format('LL'));
   });
-  $('.container').fadeIn(800, function() {
-    $('.container').removeClass('dn');
-  });
   var loading = false,
     currentPage = 1,
     totalPage = $('.totalPage').val();
@@ -33,19 +30,13 @@ $(function() {
             moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
           }
           $('#page1').html(post);
-          $('#page1').fadeIn(800, function() {
-            $('#page1').removeClass('dn');
-          });
-          $('.foot').fadeIn(800, function() {
-            $('.foot').removeClass('dn');
-          });
+          $('#page1').removeClass('dn');
+          $('.foot').removeClass('dn');
         }
       });
     }
   } else {
-    $('.foot').fadeIn(800, function() {
-      $('.foot').removeClass('dn');
-    });
+    $('.foot').removeClass('dn');
   }
   $(window).on('scroll', function() {
     var st = $(document).scrollTop();
@@ -73,9 +64,7 @@ $(function() {
                     '</div>')
                   }
                   $('#page' + currentPage).html(post);
-                  $('#page' + currentPage).fadeIn(800, function() {
-                    $('#page' + currentPage).removeClass('dn');
-                  });
+                  $('#page' + currentPage).removeClass('dn');
                 }
               });
               $('.loading').slideUp(300);
