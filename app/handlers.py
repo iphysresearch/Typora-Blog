@@ -29,7 +29,7 @@ class IndexHandler(web.RequestHandler):
 class PostsHandler(web.RequestHandler):
     @gen.coroutine
     def get(self):
-        current_page = abs(int(self.get_argument('page', 0)))
+        current_page = abs(int(self.get_argument('page', 1)))
         total_page = int((len(options.config['posts']) + 4) / options.config['paging'])
         if current_page < total_page:
             posts = options.config['posts'][(current_page - 1) * options.config['paging']:

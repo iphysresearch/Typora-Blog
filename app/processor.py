@@ -49,11 +49,11 @@ def process():
             soup.find('p').decompose()
             post_link = ' ...<a href="/p/%s"> 阅读全文</a>' % post['id']
             try:
-                post['abstract'] = str(soup.find('div', attrs={'class':'a'})).\
+                post['abstract'] = str(soup.find('div', attrs={'class': 'a'})).\
                 replace('</p></div>', post_link + '</p></div>')
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
-                post['abstract'] = str(soup.find('div', attrs={'class':'a'})).\
+                post['abstract'] = str(soup.find('div', attrs={'class': 'a'})).\
                 replace('</div>', post_link + '</div>')
             if post['abstract'] == str(None):
                 post['abstract'] = str(soup.find('p')).replace('</p>', post_link + '</p>')
