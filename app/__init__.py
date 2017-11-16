@@ -8,7 +8,7 @@ from tornado.options import define, options
 
 from config import DEV_CONFIG, PROD_CONFIG
 from .log_kit import LogFilter
-from .processor import process
+from .html2template import html2template
 from .handlers import (PageNotFoundHandler,
                        IndexHandler,
                        PostsHandler,
@@ -63,7 +63,7 @@ def create_app():
     root_logger.addHandler(file_err_hdlr)
     options.config['root_logger'] = root_logger
 
-    options.config['posts'] = process()
+    options.config['posts'] = html2template()
 
     settings = dict(
         template_path=os.path.join(os.path.dirname(__file__), 'templates'),

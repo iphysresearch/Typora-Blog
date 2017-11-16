@@ -27,7 +27,7 @@ def str2timestamp(time_str):
         options.config['root_logger'].error(err, exc_info=True)
         return 0
 
-def process():
+def html2template():
     posts = []
     new_posts = os.listdir(os.path.join(options.config['root_path'], 'post'))
     for template_file_name in os.listdir(os.path.join(options.config['root_path'],
@@ -60,7 +60,7 @@ def process():
             try:
                 template = '{% extends "../base.html" %}{% block description %}' \
                 + post['title'] + '{% end %}{% block title %}' + post['title'] + \
-                '{% end %}{% block section %}<div class="postBlock">' + \
+                ' - Jackeriss{% end %}{% block section %}<div class="postBlock">' + \
                 str(soup.find('body')).replace('</h2>', '</h2><div class="time">\
                                                <input type="hidden" value="{{ \
                                                timestamp }}"/></div>') + \
@@ -76,6 +76,6 @@ def process():
     return posts
 
 if __name__ == '__main__':
-    POSTS = process()
+    POSTS = html2template()
     for p in POSTS:
         print(p['id'])

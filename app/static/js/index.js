@@ -26,8 +26,8 @@ $(function() {
           var post = '';
           for (var i = 0; i < data.length; i++) {
             post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].id +
-            '">' + data[i].title + '</a></h2>' + '<div class="time">' +
-            moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
+              '">' + data[i].title + '</a></h2>' + '<div class="time">' +
+              moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract + '</div>')
           }
           $('#page1').html(post);
           $('#page1').removeClass('dn');
@@ -59,9 +59,9 @@ $(function() {
                   var post = '';
                   for (var i = 0; i < data.length; i++) {
                     post += ('<div class="postBlock">' + '<h2 class="title"><a href="/p/' + data[i].id +
-                    '">' + data[i].title + '</a></h2>' + '<div class="time">' +
-                    moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract +
-                    '</div>')
+                      '">' + data[i].title + '</a></h2>' + '<div class="time">' +
+                      moment.unix(data[i].timestamp).fromNow() + '</div>' + data[i].abstract +
+                      '</div>')
                   }
                   $('#page' + currentPage).html(post);
                   $('#page' + currentPage).removeClass('dn');
