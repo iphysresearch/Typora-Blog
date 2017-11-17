@@ -9,20 +9,21 @@ from tornado.options import define, options
 from config import DEV_CONFIG, PROD_CONFIG
 from .log_kit import LogFilter
 from .html2template import html2template
-from .handlers import (PageNotFoundHandler,
-                       IndexHandler,
-                       PostsHandler,
-                       PostHandler,
-                       AchiveHandler,
-                       ShareHandler,
-                       ProductHandler,
-                       LinkHandler,
-                       AboutHandler)
+from .handler import (PageNotFoundHandler,
+                      IndexHandler,
+                      PostsHandler,
+                      PostHandler,
+                      AchiveHandler,
+                      ShareHandler,
+                      ProductHandler,
+                      LinkHandler,
+                      AboutHandler)
 
 def create_app():
     '''Create APP'''
     root_logger = logging.getLogger()
-    formatter = logging.Formatter('[%(asctime)s] $%(levelname)s (%(filename)s:%(lineno)d) %(message)s')
+    formatter = logging.Formatter(
+        '[%(asctime)s] $%(levelname)s (%(filename)s:%(lineno)d) %(message)s')
     stdout_hdlr = logging.StreamHandler(sys.stdout)
     stderr_hdlr = logging.StreamHandler(sys.stderr)
     log_filter = LogFilter(logging.WARNING)
@@ -66,7 +67,7 @@ def create_app():
     options.config['posts'] = html2template()
 
     settings = dict(
-        template_path=os.path.join(os.path.dirname(__file__), 'templates'),
+        template_path=os.path.join(os.path.dirname(__file__), 'template'),
         static_path=os.path.join(os.path.dirname(__file__), 'static'),
         debug=options.config['debug'],
         gzip=True,

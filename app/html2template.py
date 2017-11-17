@@ -31,10 +31,10 @@ def html2template():
     posts = []
     new_posts = os.listdir(os.path.join(options.config['root_path'], 'post'))
     for template_file_name in os.listdir(os.path.join(options.config['root_path'],
-                                                      'app/templates/post')):
+                                                      'app/template/post')):
         if template_file_name not in new_posts:
             os.remove(os.path.join(options.config['root_path'],
-                                   'app/templates/post',
+                                   'app/template/post',
                                    template_file_name))
     for post_file_name in new_posts:
         if '.html' in post_file_name:
@@ -68,7 +68,7 @@ def html2template():
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
             with open(os.path.join(options.config['root_path'],
-                                   'app/templates/post/%s.html' % post['title']),
+                                   'app/template/post/%s.html' % post['title']),
                       'w') as template_file:
                 template_file.write(template)
             posts.append(post)
