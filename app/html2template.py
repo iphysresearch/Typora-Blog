@@ -59,13 +59,14 @@ def html2template():
             if post['abstract'] == str(None):
                 post['abstract'] = str(soup.find('p')).replace('</p>', post_link + '</p>')
             try:
-                template = '{% extends "../base.html" %}{% block description %}' \
-                + post['title'] + '{% end %}{% block title %}' + post['title'] + \
-                ' - Jackeriss{% end %}{% block section %}<div class="postBlock">' + \
-                str(soup.find('body')).replace('</h2>', '</h2><div class="time">\
-                                               <input type="hidden" value="{{ \
-                                               timestamp }}"/></div>') + \
-                                               '<div id="gitalk-container"></div></div>{% end %}'
+                template = ('{% extends "../base.html" %}{% block description %}'
+                + post['title']
+                + '{% end %}{% block title %}' + post['title']
+                + ' - Jackeriss{% end %}{% block section %}<div class="postBlock">'
+                + str(soup.find('body')).replace(
+                    '</h2>',
+                    '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>')
+                + '<div id="gitalk-container"></div></div>{% end %}')
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
             with open(os.path.join(options.config['root_path'],
