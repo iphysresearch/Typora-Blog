@@ -78,7 +78,7 @@ def html2template():
         for post in posts:
             urls.write('https://www.jackeiss.com/p/' + post['id'] + '\n')
     options.config['root_logger'].info(requests.post(
-        'http://data.zz.baidu.com/urls?site=www.jackeriss.com&token=ZwMI7Ew0rbHnz5ky',
+        'http://data.zz.baidu.com/urls?site=https://www.jackeriss.com&token=ZwMI7Ew0rbHnz5ky',
         files={'file': open('urls.txt', 'r')}).text)
     return posts
 
