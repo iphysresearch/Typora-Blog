@@ -2,6 +2,7 @@ import os
 import time
 import datetime
 
+import requests
 from bs4 import BeautifulSoup
 from tornado.options import options
 
@@ -73,6 +74,12 @@ def html2template():
                 template_file.write(template)
             posts.append(post)
     posts.sort(key=lambda x: x['timestamp'], reverse=True)
+    with open('urls.txt', 'w') as urls:
+        for post in posts:
+            urls.write('https://www.jackeiss.com/p/' + post['id'] + '\n')
+    options.config['root_logger'].info(requests.post(
+        'http://data.zz.baidu.com/urls?site=www.jackeriss.com&token=ZwMI7Ew0rbHnz5ky',
+        files={'file': open('urls.txt', 'r')}).text)
     return posts
 
 if __name__ == '__main__':
