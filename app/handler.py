@@ -2,32 +2,25 @@ from tornado import web, gen, escape
 from tornado.options import options
 
 
-class PageNotFoundHandler(web.RequestHandler):
-    @gen.coroutine
+class BaseHandler(web.RequestHandler):
+    def write_error(self, status_code, **kwargs):
+        if status_code == 404:
+            self.render('error.html', code='404')
+        else:
+            self.render('error.html', code='500')
+
+
+class PageNotFoundHandler(BaseHandler):
     def get(self):
         self.render('error.html', code='404')
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class IndexHandler(web.RequestHandler):
-    @gen.coroutine
+class IndexHandler(BaseHandler):
     def get(self):
         self.render('index.html', page_num=int((len(options.config['posts']) + 4) / options.config['paging']))
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class PostsHandler(web.RequestHandler):
-    @gen.coroutine
+class PostsHandler(BaseHandler):
     def get(self):
         current_page = abs(int(self.get_argument('page', 1)))
         total_page = int((len(options.config['posts']) + 4) / options.config['paging'])
@@ -42,15 +35,8 @@ class PostsHandler(web.RequestHandler):
         respon_json = escape.json_encode(posts)
         self.write(respon_json)
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class PostHandler(web.RequestHandler):
-    @gen.coroutine
+class PostHandler(BaseHandler):
     def get(self, url):
         found_post = False
         for post in options.config['posts']:
@@ -63,68 +49,27 @@ class PostHandler(web.RequestHandler):
         else:
             self.render('error.html', code='404')
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class AchiveHandler(web.RequestHandler):
-    @gen.coroutine
+class AchiveHandler(BaseHandler):
     def get(self):
         self.render('achive.html', posts=options.config['posts'])
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class ShareHandler(web.RequestHandler):
-    @gen.coroutine
+class ShareHandler(BaseHandler):
     def get(self):
         self.render('share.html')
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class ProductHandler(web.RequestHandler):
-    @gen.coroutine
+class ProductHandler(BaseHandler):
     def get(self):
         self.render('product.html')
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class LinkHandler(web.RequestHandler):
-    @gen.coroutine
+class LinkHandler(BaseHandler):
     def get(self):
         self.render('link.html')
 
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
 
-
-class AboutHandler(web.RequestHandler):
-    @gen.coroutine
+class AboutHandler(BaseHandler):
     def get(self):
         self.render('about.html')
-
-    def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            self.render('error.html', code='404')
-        else:
-            self.render('error.html', code='500')
