@@ -17,7 +17,8 @@ class PageNotFoundHandler(BaseHandler):
 
 class IndexHandler(BaseHandler):
     def get(self):
-        self.render('index.html', page_num=int((len(options.config['posts']) + 4) / options.config['paging']))
+        self.render('index.html', page_num=int((
+            len(options.config['posts']) + 4) / options.config['paging']))
 
 
 class PostsHandler(BaseHandler):
