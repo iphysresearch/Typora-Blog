@@ -30,20 +30,34 @@ def str2timestamp(time_str):
 
 def html2template():
     posts = []
-    new_posts = os.listdir(os.path.join(options.config['root_path'], 'post'))
-    for template_file_name in os.listdir(os.path.join(options.config['root_path'],
-                                                      'app/template/post')):
+    new_posts = os.listdir(
+        os.path.join(options.config['root_path'], 'post'))
+    for template_file_name in os.listdir(
+            os.path.join(
+                options.config['root_path'],
+                'app/template/post'
+            )
+        ):
         if template_file_name not in new_posts:
-            os.remove(os.path.join(options.config['root_path'],
-                                   'app/template/post',
-                                   template_file_name))
+            os.remove(
+                os.path.join(
+                    options.config['root_path'],
+                    'app/template/post',
+                    template_file_name
+                )
+            )
     for post_file_name in new_posts:
         if '.html' in post_file_name:
             post = {}
             post['title'] = post_file_name.replace('.html', '')
             post['id'] = post['title'].replace(' ', '')
-            with open(os.path.join(options.config['root_path'],
-                                   'post/%s' % post_file_name), 'r') as source_file:
+            with open(
+                os.path.join(
+                    options.config['root_path'],
+                    'post/%s' % post_file_name
+                ),
+                'r'
+            ) as source_file:
                 text = source_file.read()
             soup = BeautifulSoup(text, 'lxml')
             post['year'], post['timestamp'] = str2timestamp(soup.find('p').get_text())
@@ -59,14 +73,15 @@ def html2template():
             if post['abstract'] == str(None):
                 post['abstract'] = str(soup.find('p')).replace('</p>', post_link + '</p>')
             try:
-                template = ('{% extends "../base.html" %}{% block description %}'
-                + post['title']
-                + '{% end %}{% block title %}' + post['title']
-                + ' - Jackeriss{% end %}{% block section %}<div class="postBlock">'
-                + str(soup.find('body')).replace(
-                    '</h2>',
-                    '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>')
-                + '<div id="gitalk-container"></div></div>{% end %}')
+                template = (
+                    '{% extends "../base.html" %}{% block description %}'
+                    + post['title']
+                    + '{% end %}{% block title %}' + post['title']
+                    + ' - Jackeriss{% end %}{% block section %}<div class="postBlock">'
+                    + str(soup.find('body')).replace(
+                        '</h2>',
+                        '</h2><div class="time"><input type="hidden" value="{{ timestamp }}"/></div>')
+                    + '<div id="gitalk-container"></div></div>{% end %}')
             except Exception as err:
                 options.config['root_logger'].error(err, exc_info=True)
             with open(os.path.join(options.config['root_path'],
@@ -78,9 +93,12 @@ def html2template():
     with open('urls.txt', 'w') as urls:
         for post in posts:
             urls.write('https://www.jackeiss.com/p/' + post['id'] + '\n')
-    options.config['root_logger'].info(requests.post(
-        'http://data.zz.baidu.com/urls?site=https://www.jackeriss.com&token=ZwMI7Ew0rbHnz5ky',
-        files={'file': open('urls.txt', 'r')}).text)
+    options.config['root_logger'].info(
+        requests.post(
+            options.config['baidu_commit_url'],
+            files={'file': open('urls.txt', 'r')}
+        ).text
+    )
     return posts
 
 if __name__ == '__main__':
