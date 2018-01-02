@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>Top15 正式上线！.md</title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}html { font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+<title>Top15 正式上线！.md</title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:  #ffffff; --text-color:  #333333; --code-block-bg-color: inherit; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { background-color: rgb(181, 214, 252); text-shadow: none; background-position: initial initial; background-repeat: initial initial; }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: auto; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) { 
@@ -30,14 +31,17 @@ h4 { font-size: 1.4rem; }
 h5 { font-size: 1.2rem; }
 h6 { font-size: 1rem; }
 p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.typora-export p { white-space: normal; }
 .mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0rem; -webkit-margin-after: 0rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
 a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
-tr { page-break-inside: avoid; page-break-after: auto; }
+figure { max-width: 100%; overflow-x: auto; margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; page-break-inside: auto; text-align: left; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 80px; }
 .CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
 .CodeMirror { text-align: left; }
@@ -47,12 +51,13 @@ table.md-table td { min-width: 80px; }
 div.hr:focus { cursor: none; }
 pre { white-space: pre-wrap; }
 .CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; page-break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: var(--code-block-bg-color); position: relative !important; }
 .md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 .md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
 .md-fences.mock-cm { white-space: pre-wrap; }
 .show-fences-line-number .md-fences { padding-left: 0px; }
 .show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.CodeMirror-line { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
 .footnotes + .footnotes { margin-top: -1em; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background-color: transparent; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; background-position: initial initial; background-repeat: initial initial; }
@@ -64,18 +69,19 @@ blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
 @media print { 
-  html, body { height: 100%; }
+  html, body { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
   .typora-export * { -webkit-print-color-adjust: exact; }
-  h1, h2, h3, h4, h5, h6 { page-break-after: avoid; break-after: avoid-page; orphans: 2; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid-page; orphans: 2; }
   p { orphans: 4; }
   html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 1cm; padding-right: 1cm; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
   @page { margin: 20mm 0mm; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
 p .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
@@ -89,7 +95,8 @@ p + .mathjax-block { margin-top: -1.143rem; }
 .md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
 .md-toc-content { position: relative; margin-left: 0px; }
 .md-toc::after, .md-toc-content::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
 .md-toc-inner:hover { }
 .md-toc-inner { display: inline-block; cursor: pointer; }
 .md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
@@ -119,17 +126,17 @@ a.md-print-anchor { border: none !important; display: inline-block !important; p
 .MathJax_SVG .MJX-monospace { font-family: monospace; }
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
 .MathJax_SVG { display: inline; font-style: normal; font-weight: normal; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { -webkit-transition: none; transition: none; }
+.MathJax_SVG * { transition: none; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
 
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
 
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
-
-/**
- * css forked from https://github.com/GitbookIO/gitbook 
- * www.gitbook.com
- * Apache License
- * https://github.com/GitbookIO/gitbook/blob/master/LICENSE
- **/
 
 @font-face {
     font-family: 'Open Sans';
@@ -350,7 +357,6 @@ table {
 }
 table tr {
     border-top: 1px solid #cccccc;
-    background-color: white;
     margin: 0;
     padding: 0;
 }
@@ -486,6 +492,10 @@ tt {
     padding-bottom:20px;
 }
 
+.sidebar-tabs {
+    border-bottom: none;
+}
+
 #typora-quick-open {
     border: 1px solid #ddd;
     background-color: #f8f8f8;
@@ -511,11 +521,26 @@ header, .context-menu, .megamenu-content, footer{
     font-family: "Segoe UI", "Arial", sans-serif;
 }
 
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+
 
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h2><a name='header-c5' class='md-header-anchor '></a>Top15 正式上线！</h2><p>2016-07-26 15:54:07</p><p><div class="a"></p><h4><a name='header-c11' class='md-header-anchor '></a>什么是 Top15 ？</h4><p><a href='http://top15.jackeriss.com'>Top15</a> 的诞生只为更方便的分享。自己手动列电影单、书单和歌单的日子一去不复返了！因为使用 Top15 可以把豆瓣上自己最近看过、想要推荐的电影、书和音乐同步展示在自己的网站上！这一切都是自动完成的，Top15 会时时追踪你在豆瓣上的动态。</p><p>使用实例：<a href='https://www.jackeriss.com/share'>https://www.jackeriss.com/share</a>
-这个页面中所推荐的电影是通过 Top15 展示的。</div></p><h4><a name='header-c17' class='md-header-anchor '></a>说明书</h4><ol start='' ><li>在<a href='http://top15.jackeriss.com'>http://top15.jackeriss.com</a> 填写信息并生成展示页面</li><li>将调用展示页面的代码粘贴至要展示位置</li><li>第一次生成展示页面需要一段时间获取数据，之后数据会暂存于服务器，无需再次获取</li><li>展示数据每隔一个小时更新一次</li><li>Top15 项目已开源于 GitHub：<a href='https://github.com/Jackeriss/Top15'>https://github.com/Jackeriss/Top15</a>，欢迎反馈 Bug 和提供建议</li><li>新增 tag 参数，支持展示被特定标签标记的电影、书或音乐，也可以通过给电影加特定标签的方式来自定义想要推荐的电影</li></ol><p>喜欢分享的同学们快去尝试一下吧！</p></div>
+<div  id='write'  class = 'is-mac'><h2><a name='header-n0' class='md-header-anchor '></a>Top15 正式上线！</h2><p>2016-07-26 15:54:07</p><p><div class="a"></p><h4><a name='header-n6' class='md-header-anchor '></a>什么是 Top15 ？</h4><p><a href='http://www.jackeriss.com/top15'>Top15</a> 的诞生只为更方便的分享。自己手动列电影单、书单和歌单的日子一去不复返了！因为使用 Top15 可以把豆瓣上自己最近看过、想要推荐的电影、书和音乐同步展示在自己的网站上！这一切都是自动完成的，Top15 会时时追踪你在豆瓣上的动态。</p><p>使用实例：<a href='https://www.jackeriss.com/share'>https://www.jackeriss.com/share</a>
+这个页面中所推荐的电影是通过 Top15 展示的。</div></p><h4><a name='header-n12' class='md-header-anchor '></a>说明书</h4><ol start='' ><li>在<a href='http://www.jackeriss.com/top15'>http://www.jackeriss.com/top15</a> 填写信息并生成展示页面</li><li>将调用展示页面的代码粘贴至要展示位置</li><li>第一次生成展示页面需要一段时间获取数据，之后数据会暂存于服务器，无需再次获取</li><li>展示数据每隔一个小时更新一次</li><li>Top15 项目已开源于 GitHub：<a href='https://github.com/Jackeriss/Top15'>https://github.com/Jackeriss/Top15</a>，欢迎反馈 Bug 和提供建议</li><li>新增 tag 参数，支持展示被特定标签标记的电影、书或音乐，也可以通过给电影加特定标签的方式来自定义想要推荐的电影</li></ol><p>喜欢分享的同学们快去尝试一下吧！</p></div>
 </body>
 </html>

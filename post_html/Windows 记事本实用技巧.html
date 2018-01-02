@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>Python 中的迟绑定 (late binding).md</title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}.CodeMirror { height: auto; }
+<title>Windows 记事本实用技巧.md</title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}.CodeMirror { height: auto; }
 .CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; }
 .CodeMirror-lines { padding: 4px 0px; }
 .CodeMirror pre { }
@@ -25,7 +25,7 @@
 .cm-s-typora-default .cm-string { color: rgb(126, 134, 169); }
 .cm-s-typora-default .cm-link { color: rgb(196, 122, 15); text-decoration: underline; }
 .cm-s-typora-default .cm-variable-2, .cm-s-typora-default .cm-variable-1 { color: inherit; }
-.cm-s-typora-default .cm-overlay { font-size: 1rem; font-family: monospace; }
+.cm-s-typora-default .cm-overlay { font-family: monospace; }
 .CodeMirror.cm-s-typora-default div.CodeMirror-cursor { border-left-width: 3px; border-left-style: solid; border-left-color: rgb(228, 98, 154); }
 .cm-s-typora-default .CodeMirror-activeline-background { left: -60px; right: -30px; background-color: rgba(204, 204, 204, 0.2); background-position: initial initial; background-repeat: initial initial; }
 .cm-s-typora-default .CodeMirror-gutters { border-right-style: none; background-color: inherit; }
@@ -79,6 +79,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 .CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
 .CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
 .CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background-image: none !important; border: none !important; background-position: initial initial !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
 .CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
 .CodeMirror-lines { cursor: text; }
 .CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; background-color: transparent; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: initial initial; background-repeat: initial initial; }
@@ -112,11 +114,12 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 .CodeMirror-lint-marker-multiple { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAMAAADzjKfhAAAACVBMVEUAAAAAAAC/v7914kyHAAAAAXRSTlMAQObYZgAAACNJREFUeNo1ioEJAAAIwmz/H90iFFSGJgFMe3gaLZ0od+9/AQZ0ADosbYraAAAAAElFTkSuQmCC); width: 100%; height: 100%; background-position: right bottom; background-repeat: no-repeat no-repeat; }
 
 
-html { font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+:root { --bg-color:  #ffffff; --text-color:  #333333; --code-block-bg-color: inherit; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { background-color: rgb(181, 214, 252); text-shadow: none; background-position: initial initial; background-repeat: initial initial; }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: auto; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) { 
@@ -140,11 +143,14 @@ h4 { font-size: 1.4rem; }
 h5 { font-size: 1.2rem; }
 h6 { font-size: 1rem; }
 p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.typora-export p { white-space: normal; }
 .mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0rem; -webkit-margin-after: 0rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
 a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
+figure { max-width: 100%; overflow-x: auto; margin: 0px; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
@@ -157,12 +163,13 @@ table.md-table td { min-width: 80px; }
 div.hr:focus { cursor: none; }
 pre { white-space: pre-wrap; }
 .CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: var(--code-block-bg-color); position: relative !important; }
 .md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 .md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
 .md-fences.mock-cm { white-space: pre-wrap; }
 .show-fences-line-number .md-fences { padding-left: 0px; }
 .show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.CodeMirror-line { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
 .footnotes + .footnotes { margin-top: -1em; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background-color: transparent; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; background-position: initial initial; background-repeat: initial initial; }
@@ -174,18 +181,19 @@ blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
 @media print { 
-  html, body { height: 100%; }
+  html, body { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   h1, h2, h3, h4, h5, h6 { break-after: avoid-page; orphans: 2; }
   p { orphans: 4; }
   html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 1cm; padding-right: 1cm; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
   @page { margin: 20mm 0mm; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
 p .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
@@ -199,7 +207,8 @@ p + .mathjax-block { margin-top: -1.143rem; }
 .md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
 .md-toc-content { position: relative; margin-left: 0px; }
 .md-toc::after, .md-toc-content::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
 .md-toc-inner:hover { }
 .md-toc-inner { display: inline-block; cursor: pointer; }
 .md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
@@ -230,43 +239,43 @@ a.md-print-anchor { border: none !important; display: inline-block !important; p
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
 .MathJax_SVG { display: inline; font-style: normal; font-weight: normal; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
 .MathJax_SVG * { transition: none; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
 
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
 
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
-/**
- * css forked from https://github.com/GitbookIO/gitbook 
- * www.gitbook.com
- * Apache License
- * https://github.com/GitbookIO/gitbook/blob/master/LICENSE
- **/
-
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: normal;
-    src: local('Open Sans Regular'),url('file:///Users/jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/400.woff') format('woff')
+    src: local('Open Sans Regular'),url('file:///Users/Jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/400.woff') format('woff')
 }
 
 @font-face {
     font-family: 'Open Sans';
     font-style: italic;
     font-weight: normal;
-    src: local('Open Sans Italic'),url('file:///Users/jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/400i.woff') format('woff')
+    src: local('Open Sans Italic'),url('file:///Users/Jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/400i.woff') format('woff')
 }
 
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: bold;
-    src: local('Open Sans Bold'),url('file:///Users/jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/700.woff') format('woff')
+    src: local('Open Sans Bold'),url('file:///Users/Jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/700.woff') format('woff')
 }
 
 @font-face {
     font-family: 'Open Sans';
     font-style: italic;
     font-weight: bold;
-    src: local('Open Sans Bold Italic'),url('file:///Users/jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/700i.woff') format('woff')
+    src: local('Open Sans Bold Italic'),url('file:///Users/Jackeriss/Library/Application%20Support/abnerworks.Typora/themes/github/700i.woff') format('woff')
 }
 
 html {
@@ -319,7 +328,7 @@ h3:hover a.anchor,
 h4:hover a.anchor,
 h5:hover a.anchor,
 h6:hover a.anchor {
-    /*background: url("file:///Users/jackeriss/Library/Application%20Support/images/modules/styleguide/para.png") no-repeat 10px center;*/
+    /*background: url("file:///Users/Jackeriss/Library/Application%20Support/images/modules/styleguide/para.png") no-repeat 10px center;*/
     text-decoration: none;
 }
 h1 tt,
@@ -460,7 +469,6 @@ table {
 }
 table tr {
     border-top: 1px solid #cccccc;
-    background-color: white;
     margin: 0;
     padding: 0;
 }
@@ -596,6 +604,10 @@ tt {
     padding-bottom:20px;
 }
 
+.sidebar-tabs {
+    border-bottom: none;
+}
+
 #typora-quick-open {
     border: 1px solid #ddd;
     background-color: #f8f8f8;
@@ -621,11 +633,33 @@ header, .context-menu, .megamenu-content, footer{
     font-family: "Segoe UI", "Arial", sans-serif;
 }
 
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+
 
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h2><a name='header-n0' class='md-header-anchor '></a>Python 中的迟绑定 (late binding)</h2><p>2017-07-26 11:25:31</p><p><div class="a"></p><blockquote><p>Python 只有在需要时才去寻找变量的值</p></blockquote><p>定义一个函数：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">example</span>(<span class="cm-variable">x</span>):</span></pre></div><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-variable">var</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><p>变量 var 尚不存在，然而 python 并不会在执行 def 语句的时候报错。在这个阶段 python 并不会去寻找变量 var 的值。</div></p><p>当调用这个函数时：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">example</span>(<span class="cm-number">6</span>)</span></pre></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">NameError</span>: <span class="cm-keyword">global</span> <span class="cm-variable">name</span> <span class="cm-string">'var'</span> <span class="cm-keyword">is</span> <span class="cm-keyword">not</span> <span class="cm-variable">defined</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><p>现在报错了，所以 python 只有在你调用 example 函数时才会寻找 var 变量。</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">var</span> = <span class="cm-number">10</span></span></pre></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">example</span>(<span class="cm-number">6</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">60</span><span class="cm-comment"># var is referring to 10</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span>​</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">var</span> = <span class="cm-number">20</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">example</span>(<span class="cm-number">6</span>)</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">120</span><span class="cm-comment"># var is referring to 20</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><p>现在我们来判断一下这两段代码的执行结果：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">foo</span>(<span class="cm-variable">y</span>):</span></pre></div><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">return</span> <span class="cm-keyword">lambda</span> <span class="cm-variable">y</span> : <span class="cm-variable">y</span> <span class="cm-operator">*</span> <span class="cm-number">2</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span>(<span class="cm-variable">foo</span>(<span class="cm-number">4</span>)(<span class="cm-number">1</span>))</span></pre><pre class=""><span style="padding-right: 0.1px;"><span>​</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">bar</span>(<span class="cm-variable">y</span>):</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">return</span> <span class="cm-keyword">lambda</span> <span class="cm-variable">x</span> : <span class="cm-variable">y</span> <span class="cm-operator">*</span> <span class="cm-number">2</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">print</span>(<span class="cm-variable">bar</span>(<span class="cm-number">4</span>)(<span class="cm-number">1</span>))</span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><p>第一段代码结果为 2，因为在 lambda 函数被调用时 y 的值为 1。
-第二段代码结果为 8，因为在 lambda 函数被调用时 y 的值为 4。</p><p>下面这段代码被视为 Python 程序员常犯的错误：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">create_multipliers</span>():</span></pre></div><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">return</span> [<span class="cm-keyword">lambda</span> <span class="cm-variable">x</span> : <span class="cm-variable">i</span> <span class="cm-operator">*</span> <span class="cm-variable">x</span> <span class="cm-keyword">for</span> <span class="cm-variable">i</span> <span class="cm-keyword">in</span> <span class="cm-builtin">range</span>(<span class="cm-number">5</span>)]</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">multiplier</span> <span class="cm-keyword">in</span> <span class="cm-variable">create_multipliers</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">print</span> <span class="cm-variable">multiplier</span>(<span class="cm-number">2</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><p>预期的结果：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">0</span></span></pre></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">2</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">4</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">6</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">8</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p>实际执行结果却是：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">8</span></span></pre></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">8</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">8</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">8</span></span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-number">8</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p>在了解了 python 迟绑定的特性之后可以判断是因为在 lambda 函数实际执行的时候循环早已结束，而此时的 i 等于 4。</p><p>如果想达到预期的效果可以这样写：</p><pre class="md-fences md-end-block" lang="python"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">create_multipliers</span>():</span></pre></div><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">return</span> [<span class="cm-keyword">lambda</span> <span class="cm-variable">x</span>, <span class="cm-variable">i</span> = <span class="cm-variable">i</span> : <span class="cm-variable">i</span> <span class="cm-operator">*</span> <span class="cm-variable">x</span> <span class="cm-keyword">for</span> <span class="cm-variable">i</span> <span class="cm-keyword">in</span> <span class="cm-builtin">range</span>(<span class="cm-number">5</span>)]</span></pre><pre class=""><span style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">multiplier</span> <span class="cm-keyword">in</span> <span class="cm-variable">create_multipliers</span>():</span></pre><pre class=""><span style="padding-right: 0.1px;"> &nbsp;  <span class="cm-keyword">print</span> <span class="cm-variable">multiplier</span>(<span class="cm-number">2</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><p>这样，lambda 函数中的 i 就在每次循环中被赋值了。</p></div>
+<div  id='write'  class = 'is-mac'><h2><a name='header-n0' class='md-header-anchor '></a>Windows 记事本实用技巧</h2><p>2014-04-11 01:30:00</p><p><div class="a"></p><h4><a name='header-n6' class='md-header-anchor '></a>自动记录上次打开的时间</h4><p>在记事本的第一行写上<code>.LOG</code>（不包括引号并且为大写字母，注意前面有个点），这样今后打开记事本文件就知道上次最后的打开时间了。 </div></p><h4><a name='header-n9' class='md-header-anchor '></a>插入当前的日期和时间</h4><p>打开记事本，按<code>F5</code>即可插入当前的日期和时间。</p><h4><a name='header-n12' class='md-header-anchor '></a>自动换行</h4><p>每次打开记事本文件总是显示一行长长的文本，阅读起来一点不方便，其实只要选择菜单栏上的<code>格式</code>，然后将<code>自动换行</code>勾选上，这样文本就会根据记事本窗口大小自动换行了。 </p><h4><a name='header-n15' class='md-header-anchor '></a>更改字体及字号</h4><p>记事本默认的字号小、字体丑，看着很不舒服，选择<code>格式-&gt;字体</code>，即可随意更改默认字体。</p><h4><a name='header-n18' class='md-header-anchor '></a>批处理</h4><p>作为 Windows 自带的编辑器，记事本可以被用来写一些批处理命令，批量处理能节省好多宝贵的时间以及烦琐的过程。</p><h5><a name='header-n21' class='md-header-anchor '></a>复制</h5><p>经本人亲自测试，复制一个 1G 的电影仅需 2 秒。（此法在大文件复制上效果尤为明显，具体步骤如下）</p><ol start='' ><li>在记事本中输入<code>copy F:\电影\黑客帝国.rmvb</code>(即 copy + 空格 + 要复制的文件的完整路径，注意：包括扩展名)</li><li>保存为<code>.bat</code>格式，保存位置为你要复制到的目标文件夹</li><li>双击运行此批处理文件</li></ol><h5><a name='header-n34' class='md-header-anchor '></a>强力删除</h5><ol start='' ><li>将如下内容复制到记事本中并保存为.bat格式</li></ol><pre class="md-fences md-end-block" lang=""> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.609375px;"></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 30px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">DEL /F /A /Q \?\%1</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RD /S /Q \?\%1</span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 74px;"></div></div></div></pre><ol start='2' ><li>将想要删除的文件直接拖到该文件上即可</li></ol><h5><a name='header-n44' class='md-header-anchor '></a>自动关机</h5><p>和上面一样都是保存为<code>.bat</code>格式文件再双击运行
+倒计时关机：<code>shutdown -s -t 600</code>（这个<code>600</code>是倒计时的时间，单位为秒）
+定时关机：<code>at 24:00 Shutdown -s</code>
+取消关机计划：<code>shutdown -a</code></p><h5><a name='header-n50' class='md-header-anchor '></a>设置wifi热点</h5><p>创建：<code>netsh wlan set hostednetwork mode=allow ssid=mywifi key=123456789</code>
+（解释一下：蓝色字是 wifi 的名称，红色字是 wifi 的密码，这些都可以随意更改，不过密码要 8 位以上。）
+打开<code>网络和共享中心</code>，点击左边的<code>更改适配器设置</code>，里面会多出一个<code>mywifi Microsoft Virtual WiFi Miniport Adapter</code>(灰色字体，具体内容不一定跟我的一样)，记住它的名字（黑色字体）。右键单击<code>宽带连接</code>（有绿色对勾那个），<code>属性-&gt;共享</code>，勾选<code>允许其他网络用户通过此计算机的 Internet 连接来连接</code>，选择刚才你记的那个名字。
+启用：<code>netsh wlan start hostednetwork</code>
+停用：<code>netsh wlan stop hostednetwork</code></p><h4><a name='header-n57' class='md-header-anchor '></a>编辑运行脚本</h4><p>一些脚本语言，如 VBS (Visual Basic Script)  可以很方便的用记事本编辑，只需更改文件的扩展名即可双击运行，利用它，我们可以编写一些小程序，如：</p><h5><a name='header-n60' class='md-header-anchor '></a>矩形面积计算器</h5><pre class="md-fences md-end-block" lang="vbscript"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.609375px;"></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 30px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">dim</span> <span class="cm-variable">a</span>, <span class="cm-variable">b</span>, <span class="cm-variable">s</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">a</span> <span class="cm-operator">=</span> <span class="cm-builtin">inputbox</span><span class="cm-bracket">(</span><span class="cm-string">"请输入矩形的长:"</span><span class="cm-bracket">)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">b</span> <span class="cm-operator">=</span> <span class="cm-builtin">inputbox</span><span class="cm-bracket">(</span><span class="cm-string">"请输入矩形的宽:"</span><span class="cm-bracket">)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">s</span> <span class="cm-operator">=</span> <span class="cm-variable">a</span> <span class="cm-operator">*</span> <span class="cm-variable">b</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">msgbox</span><span class="cm-bracket">(</span><span class="cm-variable">s</span><span class="cm-bracket">)</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 140px;"></div></div></div></pre><h5><a name='header-n62' class='md-header-anchor '></a>让电脑说话</h5><pre class="md-fences md-end-block" lang="vbscript"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.609375px;"></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 30px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">CreateObject</span><span class="cm-bracket">(</span><span class="cm-string">"SAPI.SpVoice"</span><span class="cm-bracket">)</span><span class="cm-variable">.Speak</span> <span class="cm-string">"Hello World！主人，我会说话了！"</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><p>将以上程序代码复制到记事本中，并保存为<code>.vbs</code>格式即可
+当然 vbs 代码还有一个很大的用途，那就是整人！电脑突然说起话来也有不错的整人效果呢！</p><h5><a name='header-n67' class='md-header-anchor '></a>不断弹出 cmd 命令行，直至电脑死机</h5><pre class="md-fences md-end-block md-focus" lang="vbscript"> <div class="CodeMirror cm-s-inner CodeMirror-wrap CodeMirror-focused"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 22px; left: 79.609375px;"></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 30px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">:</span><span class="cm-variable">begin</span></span></pre></div><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">start</span> <span class="cm-variable">cmd</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">goto</span> <span class="cm-variable">begin</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 96px;"></div></div></div></pre><p>十分有趣，不是吗？</p></div>
 </body>
 </html>
