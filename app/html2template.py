@@ -30,8 +30,7 @@ def str2timestamp(time_str):
 
 def html2template():
     posts = []
-    new_posts = os.listdir(
-        os.path.join(options.config['root_path'], 'post'))
+    new_posts = os.listdir(os.path.join(options.config['root_path'], 'post_html'))
     for template_file_name in os.listdir(
             os.path.join(
                 options.config['root_path'],
@@ -54,7 +53,7 @@ def html2template():
             with open(
                 os.path.join(
                     options.config['root_path'],
-                    'post/%s' % post_file_name
+                    'post_html/%s' % post_file_name
                 ),
                 'r'
             ) as source_file:
