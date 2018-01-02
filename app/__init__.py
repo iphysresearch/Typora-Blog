@@ -83,6 +83,6 @@ def create_app():
         (r'/about', AboutHandler),
         (r'/((js|css|image)/.*)', web.StaticFileHandler, dict(path=settings['static_path'])),
         (r'/(.*\.(txt|html))', web.StaticFileHandler, dict(path=settings['static_path'])),
-        ('.*', PageNotFoundHandler)
+        (r'.*', PageNotFoundHandler)
     ], **settings)
     return app
