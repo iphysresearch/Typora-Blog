@@ -39,11 +39,7 @@ class PostsHandler(BaseHandler):
 
 class PostHandler(BaseHandler):
     def get(self, url):
-        found_post = False
-        for post in options.config['posts']:
-            if url == post['id']:
-                found_post = True
-                break
+        found_post = any(url == post['id'] for post in options.config['posts'])
         if found_post:
             self.render('post/' + post['title'] +
                         '.html', timestamp=post['timestamp'])

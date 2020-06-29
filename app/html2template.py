@@ -47,8 +47,7 @@ def html2template():
             )
     for post_file_name in new_posts:
         if '.html' in post_file_name:
-            post = {}
-            post['title'] = post_file_name.replace('.html', '')
+            post = {'title': post_file_name.replace('.html', '')}
             post['id'] = post['title'].replace(' ', '')
             with open(
                 os.path.join(

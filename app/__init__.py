@@ -72,17 +72,27 @@ def create_app():
         debug=options.config['debug'],
         gzip=True,
     )
-    app = web.Application([
-        (r'/', IndexHandler),
-        (r'/posts', PostsHandler),
-        (r'/p/(.*)', PostHandler),
-        (r'/achive', AchiveHandler),
-        (r'/share', ShareHandler),
-        (r'/product', ProductHandler),
-        (r'/link', LinkHandler),
-        (r'/about', AboutHandler),
-        (r'/((js|css|image)/.*)', web.StaticFileHandler, dict(path=settings['static_path'])),
-        (r'/(.*\.(txt|html))', web.StaticFileHandler, dict(path=settings['static_path'])),
-        (r'.*', PageNotFoundHandler)
-    ], **settings)
-    return app
+    return web.Application(
+        [
+            (r'/', IndexHandler),
+            (r'/posts', PostsHandler),
+            (r'/p/(.*)', PostHandler),
+            (r'/achive', AchiveHandler),
+            (r'/share', ShareHandler),
+            (r'/product', ProductHandler),
+            (r'/link', LinkHandler),
+            (r'/about', AboutHandler),
+            (
+                r'/((js|css|image)/.*)',
+                web.StaticFileHandler,
+                dict(path=settings['static_path']),
+            ),
+            (
+                r'/(.*\.(txt|html))',
+                web.StaticFileHandler,
+                dict(path=settings['static_path']),
+            ),
+            (r'.*', PageNotFoundHandler),
+        ],
+        **settings
+    )
